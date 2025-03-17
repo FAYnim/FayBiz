@@ -37,7 +37,7 @@
             <div class="button-container">
                 <button class="btn-primary" id="btn-refresh" onclick="refresh(1)">Refresh</button>
                 <button class="btn-secondary dbtn" id="dbtn-refresh" style="display: none;">Refresh</button>
-                <button class="btn-primary" id="btn-add" onclick="add()">Add</button>
+                <button class="btn-primary" id="btn-add" onclick="editData()">Add</button>
                 <button class="btn-secondary dbtn" id="dbtn-add" style="display: none;">Add</button>
             </div>
 
