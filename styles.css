@@ -1,0 +1,104 @@
+/* General Styles */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h2{color: #fff;}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #b0bec5;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #263238;
+    color: #e0e0e0;
+    outline: none;
+}
+
+button {
+    width: auto; /* Hapus width: 100%; agar tidak full width */
+    padding: 0.75rem 1.5rem; /* Sesuaikan padding horizontal */
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Pastikan ini ada, untuk konsistensi */
+    margin: 0.25rem;     /* Sedikit margin untuk spasi */
+    text-align: center;   /* Pusatkan teks */
+    text-decoration: none; /* Hapus garis bawah jika ada */
+}
+
+/*button:hover{
+    opacity: 0.8;
+}*/
+
+
+/* --- Variasi Tombol --- */
+
+/* Tombol Primary */
+.btn-primary {
+    background-color: #009688; /* Warna utama */
+    color: #fff;
+}
+
+/*.btn-primary:hover {
+     background-color: #00796b;
+}*/
+
+/* Tombol Secondary */
+.btn-secondary {
+    background-color: #607d8b; /* Warna sekunder (contoh) */
+    color: #fff;
+}
+
+/*.btn-secondary:hover {
+    background-color: #455a64;
+}*/
+
+/* Tombol Danger (misalnya untuk Delete) */
+.btn-danger {
+    background-color: #f44336;
+    color: #fff;
+}
+/*.btn-danger:hover {
+    background-color: #d32f2f;
+}*/
+
+/* Tombol Info (misalnya untuk notifikasi) */
+.btn-info {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+/*.btn-info:hover{
+    background-color: #0d47a1;
+}*/
+/* Tambahkan variasi lain sesuai kebutuhan (misalnya, .btn-success, .btn-warning, dll.) */
+/* Anda juga bisa menambahkan gaya untuk keadaan disabled: */
+button:disabled,
+.btn-disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6; /* Lebih redup */
+}
