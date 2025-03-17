@@ -27,7 +27,7 @@ git clone https://github.com/username/repo-name.git
 http://localhost/erp-website/
 ```
 ## 📷 Screenshot
-
+[Dashboard Preview](dashboad-preview.jpg)
 Main dashboard view of the ERP Website.
 
 ## 🔥 Roadmap & Future Development
