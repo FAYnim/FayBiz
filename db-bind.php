@@ -1,8 +1,8 @@
 <?php
 	define ("dbhost", "localhost");
-	define ("dbuser", "mitr7389_faynim");
-	define ("dbpass", "B]1Q5ZbcPWp(");
-	define ("dbname", "mitr7389_faynim");
+	define ("dbuser", "YOUR_DATABASE_USERNAME");
+	define ("dbpass", "YOUR_DATABASE_PASSWORD");
+	define ("dbname", "YOUR_DATABASE_NAME");
 
   function db_cektabel($tbl){
     $db1 = mysqli_connect(dbhost, dbuser, dbpass, dbname);
