@@ -1,0 +1,230 @@
+/* Dashboard Styles */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    cursor: pointer;
+    display: none; /* Hidden by default on larger screens */
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.sidebar {
+    background-color: #1e1e1e;
+    color: #b0bec5;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    z-index: 1000;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 1rem;
+}
+
+.sidebar ul li a {
+    color: #b0bec5;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    color: #fff;
+}
+
+.content {
+    margin-left: 250px; /* Adjusted for sidebar width */
+    padding: 1rem;
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    z-index: 999;
+}
+
+.button-container {
+    margin-bottom: 20px;
+    display: flex;          /* Mengaktifkan flexbox */
+    justify-content: flex-end; /* Rata kanan */
+    gap: 10px;
+}
+.button-container button {
+    display: inline-block; /* Membuat tombol bersebelahan */
+    margin: 0 5px;
+}
+
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    width: 100%;      /* Use full width of the content area */
+}
+
+.data-table {
+    width: 100%; /*  Use automatic width based on content*/
+/*    min-width: 100%; /*  Ensure it's at least as wide as the container */
+    border-collapse: collapse; /* Remove spacing between cells */
+}
+
+.data-table th,
+.data-table td {
+    padding: 8px;
+    border: 1px solid #333;
+    text-align: left;
+    vertical-align: top; /* Add this line */
+}
+
+.data-table td input[type="text"] {
+    width: 100%; /* Use full width of the cell */
+    border: none; /* Optional: Remove border */
+    color: #fff; /* Inherit text color from parent */
+    font-family: inherit; /* Inherit font family from parent */
+    font-size: inherit;
+    outline: none; /* Remove outline on focus */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 5px;
+}
+
+.data-table th {
+    background-color: #263238;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.action-dropdown {
+    width: 100%; /* Use full width of the cell */
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #263238;
+    color: #e0e0e0;
+    appearance: none; /* Remove default browser styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+/* Optional: Style the dropdown arrow (using a pseudo-element) */
+.action-dropdown::-ms-expand {
+    display: none; /* Hide default IE arrow */
+}
+.action-dropdown {
+     /* Add custom arrow (optional) */
+     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23e0e0e0' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+}
+
+.data-table th:first-child,  /* Kolom No. */
+.data-table td:first-child {
+    width: 1%; /*  Lebar minimum, akan menyesuaikan jika konten lebih lebar */
+    white-space: nowrap; /* Cegah teks "No." menjadi dua baris */
+}
+
+.data-table th:nth-child(3), /* Kolom Action */
+.data-table td:nth-child(3) {
+    width: 1%; /* Lebar minimum */
+     white-space: nowrap; /* Cegah dropdown melebar */
+}
+
+.data-table th:nth-child(2), /* Kolom Data */
+.data-table td:nth-child(2) {
+   width: 98%;
+}
+.action-dropdown{
+    width: auto; /* Biarkan lebar menyesuaikan dengan konten (ikon) */
+}
+
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.footer {
+    background-color: #1e1e1e;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Add Form Styles */
+#add-form-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+.form-group label{
+    color:#fff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex; /* Show on smaller screens */
+    }
+
+    .sidebar {
+        /*transform: translateX(-100%);  Initially hidden */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Slide in when active */
+    }
+    .content{
+        margin-left: 0;
+    }
+}
