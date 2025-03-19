@@ -13,7 +13,10 @@ $(document).ready(function() {
 });
 
 var refresh_dashboard = function(){
-    $(".stchange").each(function(){
+    const pathname = window.location.pathname;
+    const pagename = pathname.split("/").pop();
+    const modulname = pagename.split(".")[0];
+    /*$(".stchange").each(function(){
         let stat_symbol = $(this).text().trim();
         
         if(stat_symbol.startsWith("+")){
@@ -22,6 +25,33 @@ var refresh_dashboard = function(){
             $(this).css("color", "red");
         } else {
         }
+    });*/
+
+    $("#btn-refresh").hide();
+    $("#dbtn-refresh").show();
+    $("#statistic-container").hide();
+
+    $.ajax({
+        url: "x" + modulname + "/refresh.php",
+        type: "post",
+        data: {
+        },
+        datatype: "html",
+        success: function(response) {
+            var cell = JSON.parse(JSON.stringify(response));
+            //alert(cell.returncode);
+            if (cell.returncode == 200) {
+                //alert(cell.html);
+                $("#statistic-container").html(cell.html);
+                $("#statistic-container").show();
+            } else if (cell.returncode == 400) {
+                alert("No Data Found!");
+                $("#statistic-container").hide();
+            }
+            $("#btn-refresh").show();
+            $("#dbtn-refresh").hide();
+        },
+        error: function() {}
     });
 }
 

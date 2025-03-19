@@ -32,17 +32,13 @@
         </aside>
         <div class="overlay" id="overlay"></div>
         <main class="content" id="dashboard-content">
-            <div class="statistic-container" id="statistic-dashboard">
-                <h2>Income 24h</h2>
-                <h3 id="stat-income">$5000<span class="stchange" id="stchange-income">+$98</span></h3>
+            <div class="button-container">
+                <button class="btn-primary" id="btn-refresh" onclick="refresh(1)">Refresh</button>
+                <button class="btn-secondary dbtn" id="dbtn-refresh" style="display: none;">Refresh</button>
             </div>
-            <div class="statistic-container" id="statistic-dashboard">
-                <h2>Outcome 24h</h2>
-                <h3 id="stat-outcome">$4000<span class="stchange" id="stchange-outcome">-$73</span></h3>
-            </div>
-            <div class="statistic-container" id="statistic-dashboard">
-                <h2>Profit 24h</h2>
-                <h3 id="stat-profit">$125<span class="stchange" id="stchange-profit"></span></h3>
+            
+            <div id="statistic-container">
+                
             </div>
         </main>
         <main class="content" id="other-content">
