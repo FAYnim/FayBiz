@@ -16,16 +16,6 @@ var refresh_dashboard = function(){
     const pathname = window.location.pathname;
     const pagename = pathname.split("/").pop();
     const modulname = pagename.split(".")[0];
-    /*$(".stchange").each(function(){
-        let stat_symbol = $(this).text().trim();
-        
-        if(stat_symbol.startsWith("+")){
-            $(this).css("color", "green");
-        } else if(stat_symbol.startsWith("-")){
-            $(this).css("color", "red");
-        } else {
-        }
-    });*/
 
     $("#btn-refresh").hide();
     $("#dbtn-refresh").show();
@@ -39,8 +29,28 @@ var refresh_dashboard = function(){
         datatype: "html",
         success: function(response) {
             var cell = JSON.parse(JSON.stringify(response));
-            //alert(cell.returncode);
             if (cell.returncode == 200) {
+                $("#statistic-container").html(cell.html).show();
+
+                // Tunggu sebentar agar DOM diperbarui, lalu jalankan styling ulang
+                setTimeout(function(){
+                    $(".stchange").each(function(){
+                        let stat_symbol = $(this).text().trim();
+                        if(stat_symbol.startsWith("+")){
+                            $(this).css("color", "green");
+                        } else if(stat_symbol.startsWith("-")){
+                            $(this).css("color", "red");
+                        }
+                    });
+                }, 50); // Delay kecil agar DOM sempat update
+
+            } else if (cell.returncode == 400) {
+                alert("No Data Found!");
+                $("#statistic-container").hide();
+            }
+            $("#btn-refresh").show();
+            $("#dbtn-refresh").hide();            //alert(cell.returncode);
+            /*if (cell.returncode == 200) {
                 //alert(cell.html);
                 $("#statistic-container").html(cell.html);
                 $("#statistic-container").show();
@@ -49,10 +59,22 @@ var refresh_dashboard = function(){
                 $("#statistic-container").hide();
             }
             $("#btn-refresh").show();
-            $("#dbtn-refresh").hide();
+            $("#dbtn-refresh").hide();*/
         },
         error: function() {}
     });
+
+/*    setTimeout(function() {
+        $(".stchange").each(function(){
+            let stat_symbol = $(this).text().trim();
+            if(stat_symbol.startsWith("+")){
+                $(this).css("color", "green !important");
+            } else if(stat_symbol.startsWith("-")){
+                $(this).css("color", "red");
+            } else {
+            }
+        });
+    }, 50);*/
 }
 
 var refresh = function(p) {
