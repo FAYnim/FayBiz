@@ -75,6 +75,7 @@
     overflow-y: auto;
     position: relative;
     z-index: 999;
+    display: none;
 }
 
 .button-container {
@@ -193,6 +194,21 @@
     color: #fff;
     text-align: center;
     padding: 1rem;
+}
+
+/* Statistic Container */
+.statistic-container {
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    text-align: center;
+    margin: 0 50px 20px;
+}
+/* Statistic Change */
+.stchange{
+    font-size: 0.6em;
+    vertical-align: super;
 }
 
 /* Add Form Styles */

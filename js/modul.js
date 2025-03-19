@@ -10,9 +10,20 @@ $(document).ready(function() {
     } else {
         refresh(1);
     }
-    //refresh(1);
-    //alert(window.location.href);
 });
+
+var refresh_dashboard = function(){
+    $(".stchange").each(function(){
+        let stat_symbol = $(this).text().trim();
+        
+        if(stat_symbol.startsWith("+")){
+            $(this).css("color", "green");
+        } else if(stat_symbol.startsWith("-")){
+            $(this).css("color", "red");
+        } else {
+        }
+    });
+}
 
 var refresh = function(p) {
     const pathname = window.location.pathname;
@@ -21,6 +32,17 @@ var refresh = function(p) {
     /*alert(pathname);
     alert(pagename);
     alert(modulname);*/
+    
+    if(modulname == "dashboard"){
+        $("#dashboard-content").show();
+        $("#other-content").hide();
+        
+        refresh_dashboard();
+        return;
+    } else {
+        $("#dashboard-content").hide();
+        $("#other-content").show();
+    }
 
     window.history.pushState("",
         "",

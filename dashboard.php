@@ -2,8 +2,8 @@
     $site = "CrypVest";
     $title = "Dashboard";
     $modul = "dashboard";
-    $version = "1.0";
-    $id = ""; if (isset($_GET["id"])){$id = $_GET["id"];}
+    $version = "1.1";
+	$id = ""; if (isset($_GET["id"])){$id = $_GET["id"];}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,21 @@
 <?php include "sidebar.inc";?>
         </aside>
         <div class="overlay" id="overlay"></div>
-        <main class="content">
+        <main class="content" id="dashboard-content">
+            <div class="statistic-container" id="statistic-dashboard">
+                <h2>Income 24h</h2>
+                <h3 id="stat-income">$5000<span class="stchange" id="stchange-income">+$98</span></h3>
+            </div>
+            <div class="statistic-container" id="statistic-dashboard">
+                <h2>Outcome 24h</h2>
+                <h3 id="stat-outcome">$4000<span class="stchange" id="stchange-outcome">-$73</span></h3>
+            </div>
+            <div class="statistic-container" id="statistic-dashboard">
+                <h2>Profit 24h</h2>
+                <h3 id="stat-profit">$125<span class="stchange" id="stchange-profit"></span></h3>
+            </div>
+        </main>
+        <main class="content" id="other-content">
             <!-- Content will be added here -->
             <!-- Refresh and Add -->
             <div class="button-container">
