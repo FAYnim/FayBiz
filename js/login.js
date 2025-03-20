@@ -13,9 +13,13 @@
                     success: function(response) {
                         var cell = JSON.parse(JSON.stringify(response));
                         //alert(cell.returncode);
+                        //alert(cell.sql);
                         const expires = cell.nextweek;
                         if(cell.returncode == 200){
-                            document.cookie = 'loggedIn=true; username=${encodeURIComponent(username)}; expires=${expires}; path=/';
+                            //document.cookie = 'loggedIn=true; username=${encodeURIComponent(username)}; expires=${expires}; path=/';
+                            document.cookie = "loggedIn=true; expires=" + expires + "; path=/";
+                            document.cookie = "username=" + encodeURIComponent(username) + "; expires= " + expires + "; path=/";
+                            //alert(document.cookie);
                             window.location.href = 'dashboard.php';
                         } else {
                             alert('Wrong Username or Password!');

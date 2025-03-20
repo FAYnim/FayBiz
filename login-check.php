@@ -17,7 +17,8 @@
 
     $r = array(
         "returncode" => $returncode,
-        "nextweek" => $nextweek
+        "nextweek" => $nextweek,
+        "sql" => $sql
     );
     echo json_encode($r);
 ?>
