@@ -47,4 +47,3 @@
         "html" => $html
     );
     echo json_encode($r);
-?>
