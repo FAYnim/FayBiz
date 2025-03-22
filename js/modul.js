@@ -6,7 +6,8 @@ $(document).ready(function() {
     } else if (urlParams == "add=") {
         add();
     } else if (urlParams == "id=") {
-        add();
+        let id = $("#add-form-container").data("id");
+        editData(id);
     } else {
         refresh(1);
     }
@@ -160,7 +161,7 @@ var add = function() {
     $("#inp-coin").val("");
     $("#inp-addr").val("");
     $("#error-coin").hide();
-    $("#error-coin").hide();
+    $("#error-addr").hide();
     $("#inp-coin").focus();
 }
 
@@ -208,20 +209,13 @@ var saveData = function() {
                 if (cell.returncode == 200) {
                     alert("Successfully Saved");
 
-                    $("#btn-save").show();
-                    $("#dbtn-save").hide();
-
                     id = $("#add-form-container").data("id", cell.id);
                     window.history.pushState("", "", pagename + "?id=" + cell.id);
 
                 } else if (cell.returncode == 100) {
                     alert("Data Already Exist");
-                    $("#btn-save").show();
-                    $("#dbtn-save").hide();
                 } else if (cell.returncode == 101) {
                     alert("Edited Data not found");
-                    $("#btn-save").show();
-                    $("#dbtn-save").hide();
                 } else if(cell.returncode == 400){
                     alert("Error ID");
                 }
@@ -229,6 +223,9 @@ var saveData = function() {
             error: function() {}
         });
     }
+
+    $("#btn-save").show();
+    $("#dbtn-save").hide();
 }
 
 var cancelAdd = function() {
@@ -244,8 +241,8 @@ var cancelAdd = function() {
     $("#add-form-container").hide();
 
 
-    $("#btn-refresh").show();
-    $("#dbtn-refresh").hide();
+    $("#btn-refresh-other-content").show();
+    $("#dbtn-refresh-other-content").hide();
     $("#btn-add").show();
     $("#dbtn-add").hide();
     
@@ -264,10 +261,14 @@ var editData = function(id) {
     $(".table-container").hide();
     $("#add-form-container").show();
 
-    $("#btn-refresh").hide();
-    $("#dbtn-refresh").hide();
+    $("#btn-refresh-other-content").hide();
+    $("#dbtn-refresh-other-content").hide();
     $("#btn-add").hide();
     $("#dbtn-add").hide();
+    $("#dashboard-content").hide();
+
+    $("#error-coin").hide();
+    $("#error-addr").hide();
 
     $.ajax({
         url: "x" + modulname + "/edit-data.php",
