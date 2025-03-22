@@ -20,7 +20,8 @@
     justify-content: space-between;
     height: 20px;
     cursor: pointer;
-    display: none; /* Hidden by default on larger screens */
+    display: none;
+    /* Hidden by default on larger screens */
 }
 
 .bar {
@@ -69,7 +70,8 @@
 }
 
 .content {
-    margin-left: 250px; /* Adjusted for sidebar width */
+    margin-left: 250px;
+    /* Adjusted for sidebar width */
     padding: 1rem;
     flex: 1;
     overflow-y: auto;
@@ -80,24 +82,31 @@
 
 .button-container {
     margin-bottom: 20px;
-    display: flex;          /* Mengaktifkan flexbox */
-    justify-content: flex-end; /* Rata kanan */
+    display: flex;
+    /* Mengaktifkan flexbox */
+    justify-content: flex-end;
+    /* Rata kanan */
     gap: 10px;
 }
 .button-container button {
-    display: inline-block; /* Membuat tombol bersebelahan */
+    display: inline-block;
+    /* Membuat tombol bersebelahan */
     margin: 0 5px;
 }
 
 .table-container {
-    overflow-x: auto; /* Enable horizontal scrolling */
-    width: 100%;      /* Use full width of the content area */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    width: 100%;
+    /* Use full width of the content area */
 }
 
 .data-table {
-    width: 100%; /*  Use automatic width based on content*/
-/*    min-width: 100%; /*  Ensure it's at least as wide as the container */
-    border-collapse: collapse; /* Remove spacing between cells */
+    width: max-content;
+    /*  Use automatic width based on content*/
+    /*    min-width: 100%; /*  Ensure it's at least as wide as the container */
+    border-collapse: collapse;
+    /* Remove spacing between cells */
 }
 
 .data-table th,
@@ -105,95 +114,134 @@
     padding: 8px;
     border: 1px solid #333;
     text-align: left;
-    vertical-align: top; /* Add this line */
+    vertical-align: top;
+    /* Add this line */
 }
 
 .data-table td input[type="text"] {
-    width: 100%; /* Use full width of the cell */
-    border: none; /* Optional: Remove border */
-    color: #fff; /* Inherit text color from parent */
-    font-family: inherit; /* Inherit font family from parent */
+    width: 100%;
+    /* Use full width of the cell */
+    border: none;
+    /* Optional: Remove border */
+    color: #fff;
+    /* Inherit text color from parent */
+    font-family: inherit;
+    /* Inherit font family from parent */
     font-size: inherit;
-    outline: none; /* Remove outline on focus */
-    overflow-x: auto; /* Enable horizontal scrolling */
+    outline: none;
+    /* Remove outline on focus */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
     padding: 5px;
+    margin-bottom: 5px;
 }
 
 .data-table th {
     background-color: #263238;
 }
 
-.btn-sm {
+/*.btn-sm {
     padding: 5px 10px;
     font-size: 0.8rem;
 }
 
 .action-dropdown {
-    width: 100%; /* Use full width of the cell */
+    width: 100%;
     padding: 5px;
     border: 1px solid #333;
     border-radius: 4px;
     background-color: #263238;
     color: #e0e0e0;
-    appearance: none; /* Remove default browser styling */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     cursor: pointer;
 }
-/* Optional: Style the dropdown arrow (using a pseudo-element) */
 .action-dropdown::-ms-expand {
-    display: none; /* Hide default IE arrow */
+    display: none;
 }
 .action-dropdown {
-     /* Add custom arrow (optional) */
-     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23e0e0e0' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23e0e0e0' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.7em top 50%, 0 0;
     background-size: 0.65em auto, 100%;
-}
+}*/
 
-.data-table th:first-child,  /* Kolom No. */
+.data-table th:first-child, /* Kolom No. */
 .data-table td:first-child {
-    width: 1%; /*  Lebar minimum, akan menyesuaikan jika konten lebih lebar */
-    white-space: nowrap; /* Cegah teks "No." menjadi dua baris */
+    width: 1%;
+    /*  Lebar minimum, akan menyesuaikan jika konten lebih lebar */
+    white-space: nowrap;
+    /* Cegah teks "No." menjadi dua baris */
 }
 
 .data-table th:nth-child(3), /* Kolom Action */
 .data-table td:nth-child(3) {
-    width: 1%; /* Lebar minimum */
-     white-space: nowrap; /* Cegah dropdown melebar */
+    width: 1%;
+    /* Lebar minimum */
+    white-space: nowrap;
+    /* Cegah dropdown melebar */
 }
 
 .data-table th:nth-child(2), /* Kolom Data */
 .data-table td:nth-child(2) {
-   width: 98%;
-}
-.action-dropdown{
-    width: auto; /* Biarkan lebar menyesuaikan dengan konten (ikon) */
+    width: 98%;
 }
 
+/* Reset Style for Dropdown*/
+.data-table .action-td{
+    padding: 0;
+}
+.data-table .action-td button{
+    margin: 0;
+}
 
+.action-container {
+    position: relative;
+    display: inline-block;
+    background: #007bff;
+    border-radius: 4px;
+    border: 1px solid #0056b3;
+    text-decoration: none;
+    margin: 0.25rem;
+}
 
-.overlay {
+.btn-action {
+    font-size: 14px;
+    border: 1px solid #007bff;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    transition: background 0.3 ease;
+}
+.btn-action:hover{
+    background: #0056b3;
+}
+
+.dropdown-menu {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+    text-align: center;
+    width: 100%;
+    background: #007bff;
+}
+.dropdown-menu .dropdown-menus{
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 998;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #007bff;
+    transition: background 0.3 ease;
 }
-
-.overlay.active {
-    display: block;
+.dropdown-menu .dropdown-menus:hover {
+    background: #0056b3;
 }
-
-.footer {
-    background-color: #1e1e1e;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
+.dropdown-item {
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 /* Statistic Container */
@@ -206,7 +254,7 @@
     text-align: center;
 }
 /* Statistic Change */
-.stchange{
+.stchange {
     font-size: 0.6em;
     vertical-align: super;
 }
@@ -223,14 +271,15 @@
 .form-group {
     margin-bottom: 10px;
 }
-.form-group label{
-    color:#fff;
+.form-group label {
+    color: #fff;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .hamburger-menu {
-        display: flex; /* Show on smaller screens */
+        display: flex;
+        /* Show on smaller screens */
     }
 
     .sidebar {
@@ -238,9 +287,9 @@
     }
 
     .sidebar.active {
-        transform: translateX(0); /* Slide in when active */
+        transform: translateX(0);
+        /* Slide in when active */
     }
-    .content{
+    .content {
         margin-left: 0;
     }
-}
