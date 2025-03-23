@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $site." | ".$title;?></title>
     <link rel="icon" href="favicon/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/style-app.css">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/style-app.css?v=<?php echo time();?>">
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -110,9 +110,9 @@
             <p>© 2025 <?php echo $site;?></p>
         </footer>
     </div>
-    <script src="js/app.js">
+    <script src="js/app.js?v=<?php echo time();?>">
     </script>
-    <script src="js/modul.js?v=1">
+    <script src="js/modul.js?v=<?php echo time();?>">
     </script>
 </body>
 </html>

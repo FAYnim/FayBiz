@@ -2,7 +2,7 @@
     $site = "CrypVest";
     $title = "Dashboard";
     $modul = "dashboard";
-    $version = "1.1";
+    $version = "1.2";
 	$id = ""; if (isset($_GET["id"])){$id = $_GET["id"];}
 ?>
 <!DOCTYPE html>
@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $site." | ".$title;?></title>
     <link rel="icon" href="favicon/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/style-app.css">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/style-app.css?v=<?php echo time();?>">
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -45,8 +45,8 @@
             <!-- Content will be added here -->
             <!-- Refresh and Add -->
             <div class="button-container">
-                <button class="btn-primary" id="btn-refresh" onclick="refresh(1)">Refresh</button>
-                <button class="btn-secondary dbtn" id="dbtn-refresh" style="display: none;">Refresh</button>
+                <button class="btn-primary" id="btn-refresh-other-content" onclick="refresh(1)">Refresh</button>
+                <button class="btn-secondary dbtn" id="dbtn-refresh-other-content" style="display: none;">Refresh</button>
                 <button class="btn-primary" id="btn-add" onclick="editData()">Add</button>
                 <button class="btn-secondary dbtn" id="dbtn-add" style="display: none;">Add</button>
             </div>
@@ -76,7 +76,8 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Data</th>
+                            <th style="max-width: 100px">Address</th>
+                            <th>Balance</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -99,7 +100,7 @@
                       </tbody>
                     <tbody class="data-body-empty">
                         <tr>
-                            <td class="data-text-empty" colspan="3" style="text-align:center;">Loading...</td>
+                            <td class="data-text-empty" colspan="4" style="text-align:center;">Loading...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -109,9 +110,9 @@
             <p>© 2025 <?php echo $site;?></p>
         </footer>
     </div>
-    <script src="js/app.js">
+    <script src="js/app.js?v=<?php echo time();?>">
     </script>
-    <script src="js/modul.js?v=1">
+    <script src="js/modul.js?v=<?php echo time();?>">
     </script>
 </body>
 </html>
