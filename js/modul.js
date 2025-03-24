@@ -64,18 +64,6 @@ var refresh_dashboard = function(){
         },
         error: function() {}
     });
-
-/*    setTimeout(function() {
-        $(".stchange").each(function(){
-            let stat_symbol = $(this).text().trim();
-            if(stat_symbol.startsWith("+")){
-                $(this).css("color", "green !important");
-            } else if(stat_symbol.startsWith("-")){
-                $(this).css("color", "red");
-            } else {
-            }
-        });
-    }, 50);*/
 }
 
 var refresh = function(p) {
@@ -107,6 +95,7 @@ var refresh = function(p) {
     $(".table-container").show();
     $("#add-form-container").hide();
 
+    $(".data-text-empty").html("Loading...");
     $(".data-body-empty").show();
     $(".data-body").hide();
 
@@ -157,6 +146,7 @@ var add = function() {
     $("#dbtn-refresh").hide();
     $("#btn-add").hide();
     $("#dbtn-add").hide();
+    $(".search-wrapper").hide();
 
     $("#inp-coin").val("");
     $("#inp-addr").val("");
@@ -245,6 +235,7 @@ var cancelAdd = function() {
     $("#dbtn-refresh-other-content").hide();
     $("#btn-add").show();
     $("#dbtn-add").hide();
+    $(".search-wrapper").show();
     
     refresh(1);
 }
@@ -265,6 +256,8 @@ var editData = function(id) {
     $("#dbtn-refresh-other-content").hide();
     $("#btn-add").hide();
     $("#dbtn-add").hide();
+    $(".search-wrapper").hide();
+
     $("#dashboard-content").hide();
 
     $("#error-coin").hide();
@@ -300,6 +293,48 @@ var editData = function(id) {
         },
         error: function() {}
     });
+}
+
+var searchData = function(){
+    const pathname = window.location.pathname;
+    const pagename = pathname.split("/").pop();
+    const modulname = pagename.split(".")[0];
+
+    $(".data-text-empty").html("Loading...");
+    $(".data-body-empty").show();
+    $(".data-body").hide();
+
+    let inpsearch = $("#inp-search").val();
+    
+    if(inpsearch != ""){
+        $.ajax({
+            url: "x" + modulname + "/search-data.php",
+            type: "post",
+            data: {
+                "inpsearch": inpsearch
+            },
+            datatype: "html",
+            success: function(response) {
+                var cell = JSON.parse(JSON.stringify(response));
+                /*alert(cell.returncode);
+                alert(cell.html);
+                alert(cell.sql);*/
+                
+                if(cell.returncode == 200){
+                    $(".data-body-empty").hide();
+                    $(".data-body").html(cell.html);
+                    $(".data-body").show();
+                } else {
+                    $(".data-text-empty").html("No Data Found!");
+                }
+            },
+            error: function() {
+                alert("Something Error! Try again later.");
+            }
+        });
+    } else {
+        refresh(1);
+    }
 }
 
 document.addEventListener('change', function(event) {
