@@ -2,7 +2,7 @@
     $site = "CrypVest";
     $title = "Dashboard";
     $modul = "dashboard";
-    $version = "1.2";
+    $version = "1.3";
 	$id = ""; if (isset($_GET["id"])){$id = $_GET["id"];}
 ?>
 <!DOCTYPE html>
@@ -43,12 +43,19 @@
         </main>
         <main class="content" id="other-content">
             <!-- Content will be added here -->
+            
             <!-- Refresh and Add -->
             <div class="button-container">
+                <!-- Search Bar -->
+                <div class="search-wrapper">
+                    <input type="text" id="inp-search" placeholder="Search..." />
+                    <button class="search-icon" onclick="searchData()">&#128269;</button>
+                </div>                
+                <!-- Refresh and Add Button -->
                 <button class="btn-primary" id="btn-refresh-other-content" onclick="refresh(1)">Refresh</button>
                 <button class="btn-secondary dbtn" id="dbtn-refresh-other-content" style="display: none;">Refresh</button>
-                <button class="btn-primary" id="btn-add" onclick="editData()">Add</button>
-                <button class="btn-secondary dbtn" id="dbtn-add" style="display: none;">Add</button>
+                <button class="btn-primary" id="btn-add" onclick="editData()">+</button>
+                <button class="btn-secondary dbtn" id="dbtn-add" style="display: none;">+</button>
             </div>
 
             <div id="add-form-container" data-id="<?php echo $id;?>">
