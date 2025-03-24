@@ -102,21 +102,3 @@ button:disabled,
     cursor: not-allowed;
     opacity: 0.6; /* Lebih redup */
 }
-
-.sidebar ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.sidebar ul li{
-    cursor: pointer;
-    padding: 10px;
-}
-.sidebar h2{
-    padding: 1rem;
-    border-bottom: 1px solid #b0bec5;
-}
-.submenu{
-    display: none;
-    padding-left: 20px;
-}
