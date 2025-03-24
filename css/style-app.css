@@ -151,8 +151,45 @@
 .button-container button {
     display: inline-block;
     /* Membuat tombol bersebelahan */
-    margin: 0 5px;
+    margin: 0;
 }
+.button-container input {
+    flex: 1;
+    max-width: 200px;
+    min-width: 100px;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+}
+.search-wrapper {
+    display: flex;
+    align-items: center;
+/*    border: 1px solid #ccc;*/
+    border-radius: 4px;
+    overflow: hidden;
+    height: 48px; /* Sesuaikan dengan tombol lainnya */
+}
+
+.search-wrapper input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    outline: none;
+    height: 100%; /* Agar tingginya mengikuti wrapper */
+}
+
+.search-icon {
+    background: #009688;
+    color: white;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Agar sejajar dengan input */
+}
+
 
 /* Table Container */
 .table-container {
