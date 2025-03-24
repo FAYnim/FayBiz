@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  /*alert("Hello World!");*/
   // Coookies Function
   function getCookie(name) {
     let nameEQ = name + "=";
@@ -47,19 +48,6 @@ $(document).ready(function() {
     $(this).next(".submenu").slideToggle(300);
     return false;
   });
-  
-  // Action Button
-  /*$(".btn-action").click(function(event){
-      alert("Hi");
-      /*event.stopPropagation();
-      let dropdown = $(this).siblings(".dropdown-menu");
-      if(dropdown.is(":visible")){
-          dropdown.fadeOut(150);
-      } else {
-          $(".dropdown-menu").fadeOut(150);
-          dropdown.fadeIn(150);
-      }
-  });*/
 });
 
 // Dropdown Onclick
