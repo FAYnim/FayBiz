@@ -25,6 +25,7 @@
                 $db_fuse = $row["fuse"];
                 $db_user = $row["user"];
                 $db_dupd = $row["dupd"];
+                $db_seq = $row["seq"];
                 
                 $html .= "<tr>"
                         ."<td>".$rownum."</td>"
@@ -43,10 +44,10 @@
                             ."<div class='action-container'>"
                                 ."<button class='btn-action'>Action</button>"
                                 ."<div class='dropdown-menu'>"
-                                    ."<div class='dropdown-menus'>"
+                                    ."<div class='dropdown-menus edit-data' data-id='$db_seq'>"
                                         ."<a href='#' class='dropdown-item'>Edit</a>"
                                     ."</div>"
-                                    ."<div class='dropdown-menus'>"
+                                    ."<div class='dropdown-menus delete-data' data-id='$db_seq'>"
                                         ."<a href='#' class='dropdown-item'>Delete</a>"
                                     ."</div>"
                                 ."</div>"
