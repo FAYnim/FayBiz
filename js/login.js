@@ -9,11 +9,12 @@
                 $.ajax({
                     url: 'login-check.php',
                     type: 'POST',
-                    data: { username: username, password: password },
+                    data: { "username": username, "password": password },
                     success: function(response) {
                         var cell = JSON.parse(JSON.stringify(response));
                         //alert(cell.returncode);
                         //alert(cell.sql);
+                        //alert(cell.table);
                         const expires = cell.nextweek;
                         if(cell.returncode == 200){
                             //document.cookie = 'loggedIn=true; username=${encodeURIComponent(username)}; expires=${expires}; path=/';
