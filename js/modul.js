@@ -337,17 +337,50 @@ var searchData = function(){
     }
 }
 
-document.addEventListener('change', function(event) {
-    // Gunakan event delegation
-    if (event.target && event.target.classList.contains('action-dropdown')) {
-        const selectedValue = event.target.value;
-        const row = event.target.closest('tr'); // Get the parent row
-        const rowNumber = row.querySelector('td:first-child').textContent; // Get the row number
-
-        if (selectedValue === 'edit') {
-            editData(rowNumber); // Panggil fungsi editData
-        } else if (selectedValue === 'delete') {
-            deleteData(rowNumber); // Panggil fungsi deleteData
-        }
+var deleteData = function(id){
+    const pathname = window.location.pathname;
+    const pagename = pathname.split("/").pop();
+    const modulname = pagename.split(".")[0];
+    
+    let delete_confirm = confirm("Are you sure you want to delete data with ID " + id + "?");
+    if(delete_confirm){
+        /*alert("Data " + id + " Deleted!");*/
+        $.ajax({
+            url: "x" + modulname + "/delete-data.php",
+            type: "post",
+            data: {
+                "id": id
+            },
+            datatype: "html",
+            success: function(response) {
+                var cell = JSON.parse(JSON.stringify(response));
+                
+                if(cell.returncode == 200){
+                    alert("Data " + id + " Successfully Deleted!");
+                } else {
+                    alert("Data " + id + " Not Found!");
+                }
+                refresh(1);
+            },
+            error: function() {
+                alert("Something Error! Try again later.");
+            }
+        });
+    } else {
+        alert("Canceled");
     }
+}
+
+$(document).ready(function(){
+    $(document).on("click", ".edit-data", function(){
+        let id = $(this).data("id");
+        /*alert("Edit Data " + id + " Clicked!");*/
+        editData(id);
+    });
+    
+    $(document).on("click", ".delete-data", function(){
+        let id = $(this).data("id");
+        /*alert("Data " + id + " Deleted!");*/
+        deleteData(id);
+    });
 });
