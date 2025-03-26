@@ -31,6 +31,7 @@ var refresh_dashboard = function(){
         success: function(response) {
             var cell = JSON.parse(JSON.stringify(response));
             if (cell.returncode == 200) {
+                //alert(cell.table);
                 $("#statistic-container").html(cell.html).show();
 
                 // Tunggu sebentar agar DOM diperbarui, lalu jalankan styling ulang
@@ -109,6 +110,8 @@ var refresh = function(p) {
         success: function(response) {
             var cell = JSON.parse(JSON.stringify(response));
             //alert(cell.returncode);
+            //alert(cell.table);
+
             if (cell.returncode == 200) {
                 //alert(cell.html);
                 $("#btn-refresh").show();
@@ -196,6 +199,7 @@ var saveData = function() {
             success: function(response) {
                 var cell = JSON.parse(JSON.stringify(response));
                 //alert(cell.returncode);
+                //alert(cell.table);
                 if (cell.returncode == 200) {
                     alert("Successfully Saved");
 
