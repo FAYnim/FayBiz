@@ -1,5 +1,5 @@
 <?php
-    include "../db-bind.php";
+    include "../db-bind2.php";
     header("Content-Type: application/json");
     $returncode= 200;
 
@@ -13,7 +13,7 @@
         ;
         $table = db_fetch($sql);
         $html = "";
-        if(count($table) == 0){
+        if(!$table){
             $returncode = 100;
         } else {
             $rownum = 0;
@@ -66,7 +66,8 @@
 
     $r = array(
         "returncode" => $returncode,
-        "html" => $html
+        "html" => $html,
+        "table" => $table
     );
     echo json_encode($r);
 ?>
