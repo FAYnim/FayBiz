@@ -1,5 +1,5 @@
 <?php
-    include "../db-bind.php";
+    include "../db-bind2.php";
     header("Content-Type: application/json");
     $tgl = getWaktuNow();
     $returncode= 200;
@@ -15,15 +15,15 @@
     } else {
         // Edit Data
         $sql = "select * from cv_adminwallet where "
-            ."seq=$id"
+            ."seq = ?"
         ;
-        $table = db_bind($sql);
-        if($table == "empty"){
-            $returncode = 100;
-        } else {
+        $table = db_bind($sql, [$id]);
+        if($table){
             $returncode = 201;
             $db_coin = $table["coin"];
             $db_addr = $table["address"];
+        } else {
+            $returncode = 100;
         }
     }
 
