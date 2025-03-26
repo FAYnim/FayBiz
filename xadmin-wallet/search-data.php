@@ -1,5 +1,5 @@
 <?php
-include "../db-bind.php";
+include "../db-bind2.php";
 header("Content-Type: application/json");
 $tgl = getWaktuNow();
 $returncode = 200;
@@ -11,9 +11,9 @@ $html = "";
 
 
 $sql = "select coin, address, balance, user, seq from cv_adminwallet where "
-."address like '%".$inpsearch."%'";
-$table = db_fetch($sql);
-if (count($table) == 0) {
+."address like ?";
+$table = db_fetch($sql, ["%".$inpsearch."%"]);
+if (!$table) {
     $returncode = 400;
 } else {
     $rownum = 0;
