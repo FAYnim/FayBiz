@@ -39,6 +39,7 @@ Main dashboard view of the ERP Website.
 
 💡 If you want to contribute or have any questions, feel free to reach out:
 📧 Email: yuana6898@example.com
+🖥️ Instagram & Threads: @fay_motion
 🌐 LinkedIn: https://id.linkedin.com/in/fay-nim-212661282
 
 Feel free to fork and contribute! Don't forget to give ⭐ if you find this project useful. 😃
