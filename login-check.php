@@ -15,7 +15,7 @@
     ;
     $param = [$username, $password];
     $table = db_bind($sql, $param);
-    if($table === null){
+    if(!$table){
         $returncode = 404;
     }
 
