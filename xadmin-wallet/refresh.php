@@ -4,19 +4,40 @@
     $returncode= 200;
 
     $page=""; if(isset($_POST["page"])){$page=$_POST["page"];}
+    $pagination = "";
+    $total_data = "";
+    $total_page = "";
 
     if($page != ""){
-        $limit = ($page - 1) * 10;
+        $limit = 10;
+        $start = ($page - 1) * $limit;
+        
+        $sql = "select count(*) as total_data from cv_adminwallet";
+        $table = db_bind($sql);
+        if(!$table){
+            $returncode = 400;
+        } else {
+            $total_data = $table["total_data"];
+            $total_page = ceil($total_data / $limit);
+            
+            for($i = 1; $i <= $total_page; $i++){
+                if($i == $page){
+                    $pagination .= "<li class='active'><a class='page-link' data-page='$i'>".$i."</a></li>";
+                } else {
+                    $pagination .= "<li><a class='page-link' data-page='$i'>".$i."</a></li>";
+                }
+            }
+        }
         
         $sql = "select * from cv_adminwallet "
-            ."limit $limit,10"
+            ."limit $start,$limit"
         ;
         $table = db_fetch($sql);
         $html = "";
         if(!$table){
             $returncode = 100;
         } else {
-            $rownum = 0;
+            $rownum = $start;
             foreach($table as $row):
                 $rownum++;
                 $db_address = $row["address"];
@@ -67,7 +88,10 @@
     $r = array(
         "returncode" => $returncode,
         "html" => $html,
-        "table" => $table
+        "table" => $table,
+        "pagination" => $pagination,
+        "total_data" => $total_data,
+        "limit" => $limit
     );
     echo json_encode($r);
 ?>
