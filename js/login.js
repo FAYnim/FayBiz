@@ -17,9 +17,11 @@
                         //alert(cell.table);
                         const expires = cell.nextweek;
                         if(cell.returncode == 200){
+                            let expires = new Date();
+                            expires.setTime(expires.getTime() + (7 * 24 * 60 * 60 * 1000));
                             //document.cookie = 'loggedIn=true; username=${encodeURIComponent(username)}; expires=${expires}; path=/';
-                            document.cookie = "loggedIn=true; expires=" + expires + "; path=/";
-                            document.cookie = "username=" + encodeURIComponent(username) + "; expires= " + expires + "; path=/";
+                            document.cookie = "loggedIn=true; expires=" + expires.toUTCString() + "; path=/";
+                            document.cookie = "username=" + encodeURIComponent(username) + "; expires= " + expires.toUTCString() + "; path=/";
                             //alert(document.cookie);
                             window.location.href = 'dashboard.php';
                         } else {
