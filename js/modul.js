@@ -2,14 +2,15 @@ $(document).ready(function() {
     const urlParams = new URLSearchParams(window.location.search);
 
     if (urlParams == "list=") {
-        refresh(1);
+        //alert(urlParams.get);
+        refresh();
     } else if (urlParams == "add=") {
         add();
     } else if (urlParams == "id=") {
         let id = $("#add-form-container").data("id");
         editData(id);
     } else {
-        refresh(1);
+        refresh();
     }
 });
 
@@ -67,7 +68,7 @@ var refresh_dashboard = function(){
     });
 }
 
-var refresh = function(p) {
+var refresh = function(p = "") {
     const pathname = window.location.pathname;
     const pagename = pathname.split("/").pop();
     const modulname = pagename.split(".")[0];
@@ -75,6 +76,7 @@ var refresh = function(p) {
     alert(pagename);
     alert(modulname);*/
     
+    // Dashboard or Not
     if(modulname == "dashboard"){
         $("#dashboard-content").show();
         $("#other-content").hide();
@@ -85,10 +87,31 @@ var refresh = function(p) {
         $("#dashboard-content").hide();
         $("#other-content").show();
     }
+ 
+    // Get Page
+    const urlParams = new URLSearchParams(window.location.search);
+    let pages = urlParams.get("list");
+    let getpage = "";
 
-    window.history.pushState("",
-        "",
-        pagename + "?list");
+    //alert("Halaman di URL: " + pages);
+    //alert("Halaman yang  direquest: " + p);
+    if(pages === "" || pages === null){ // If user share the link with no parameter
+        //alert(true);
+        getpage = 1;
+        window.history.pushState("",
+            "",
+            pagename + "?list=" + 1);
+    } else {
+        if(p == ""){
+            //alert("Page Default!");
+            getpage = pages; // If user share the link with parameter, then follow the param
+        } else { // If user open page by click button, then follow the parameter in the button
+            getpage = p;
+            window.history.pushState("",
+                "",
+                pagename + "?list=" + p);
+        }
+    }
 
     $("#btn-refresh").hide();
     $("#dbtn-refresh").show();
@@ -104,25 +127,32 @@ var refresh = function(p) {
         url: "x" + modulname + "/refresh.php",
         type: "post",
         data: {
-            "page": p
+            "page": getpage
         },
         datatype: "html",
         success: function(response) {
             var cell = JSON.parse(JSON.stringify(response));
             //alert(cell.returncode);
             //alert(cell.table);
+            /*alert(cell.total_data);
+            alert(cell.limit);*/
+            //alert(cell.pagination);
 
             if (cell.returncode == 200) {
                 //alert(cell.html);
                 $("#btn-refresh").show();
                 $("#dbtn-refresh").hide();
 
-
                 $(".data-body-empty").hide();
+                
                 $(".data-body").html(cell.html);
+                $(".pagination").html(cell.pagination);
+                
                 $(".data-body").show();
             } else if (cell.returncode == 100) {
                 $(".data-text-empty").html("No Data Found!");
+            } else if(cell.returncode == 400){
+                $(".data-text-empty").html("Server Error! Try again later.");
             }
         },
         error: function() {}
@@ -387,4 +417,12 @@ $(document).ready(function(){
         /*alert("Data " + id + " Deleted!");*/
         deleteData(id);
     });
-});
+    
+    $(document).on("click", ".page-link", function(e){
+        e.preventDefault();
+        
+        let page = $(this).data("page");
+        
+        refresh(page);
+    });
+});l
