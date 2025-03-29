@@ -2,7 +2,7 @@
     $site = "CrypVest";
     $title = "Admin Wallet";
     $modul = "admin wallet";
-    $version = "1.3";
+    $version = "1.4";
 	$id = ""; if (isset($_GET["id"])){$id = $_GET["id"];}
 ?>
 <!DOCTYPE html>
@@ -52,7 +52,7 @@
                     <button class="search-icon" onclick="searchData()">&#128269;</button>
                 </div>                
                 <!-- Refresh and Add Button -->
-                <button class="btn-primary" id="btn-refresh-other-content" onclick="refresh(1)">Refresh</button>
+                <button class="btn-primary" id="btn-refresh-other-content" onclick="refresh()">Refresh</button>
                 <button class="btn-secondary dbtn" id="dbtn-refresh-other-content" style="display: none;">Refresh</button>
                 <button class="btn-primary" id="btn-add" onclick="editData()">+</button>
                 <button class="btn-secondary dbtn" id="dbtn-add" style="display: none;">+</button>
@@ -112,6 +112,9 @@
                     </tbody>
                 </table>
             </div>
+            <ul class="pagination">
+                
+            </ul>
         </main>
         <footer class="footer">
             <p>© 2025 <?php echo $site;?></p>
