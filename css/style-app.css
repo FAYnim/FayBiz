@@ -131,6 +131,41 @@
     display: block;
 }
 
+/*Pagination*/
+.pagination {
+    display: inline-flex; /* Menyesuaikan dengan total <li> */
+    list-style: none;
+    padding: 0;
+    margin-top: 20px; /* Jarak atas */
+    border: 1px solid #009688;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.pagination li {
+    margin: 0; /* Tidak ada jarak antar item */
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #009688;
+    padding: 8px 12px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+/*.pagination a:hover,
+.pagination .active a {
+    background: #009688;
+    color: white;
+}*/
+
+.pagination .active a {
+    background: #009688;
+    color: white;
+    font-weight: bold;
+}
+
 /* Footer */
 .footer {
     background-color: #1e1e1e;
